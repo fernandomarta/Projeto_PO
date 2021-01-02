@@ -7,6 +7,7 @@
  */
 class Cor {
     private final int[] rgb; // @aCor
+
     // Cria uma cor RGB, dado que os valores estejam entre o intervalo de [0, 255]
     Cor(int r, int g, int b) {
         if(!valido(r) || !valido(g) || !valido(b))
@@ -14,6 +15,7 @@ class Cor {
         
         this.rgb = new int[] {r, g, b};
     }
+
     // Vermelho [0, 255]
     int obterR() {
         return rgb[0];

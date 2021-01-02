@@ -13,10 +13,10 @@ public class ManipuladorDeImagens {
         int larguraMax = ((int)larguraDaImagemAAlterar/escala)*escala;
         int alturaMax = ((int)alturaDaImagemAAlterar/escala)*escala;
 
-        int valorEscala;
+        /*int valorEscala;
         Scanner scanner = new Scanner(System.in);
         System.out.println("indique a escala ");
-        valorEscala = scanner.nextInt();
+        valorEscala = scanner.nextInt();*/
 
         // O que é que acontece se a escala for ímpar?
         // O que é que acontece se a imagem não for quadrada?
@@ -31,7 +31,7 @@ public class ManipuladorDeImagens {
         //2: [2, 0][2, 1][2, 2][2, 3]
         //3: [3, 0][3, 1][3, 2][3, 3]
 
-        System.out.println("Working Directory = " + System.getProperty("user.dir"));
+        //System.out.println("Working Directory = " + System.getProperty("user.dir"));
 
         for(int xQuadradoFora = 0; xQuadradoFora < larguraMax; xQuadradoFora+=escala) {
             for(int yQuadradoFora = 0; yQuadradoFora < alturaMax; yQuadradoFora+=escala) {
