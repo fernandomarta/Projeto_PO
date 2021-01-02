@@ -1,12 +1,22 @@
-
-
-import java.util.List;
+import java.util.ArrayList;
 
 public class Album {
-    List<ImagemComEtiqueta> asMinhasImagens;
-    ManipuladorDeImagens manipuladorDeImagens;
+    ArrayList<ImagemComEtiqueta> asMinhasImagens = new ArrayList<ImagemComEtiqueta>();
 
-    ImagemComEtiqueta imagem1 = new ImagemComEtiqueta("donald_trump.jpg");
+    //ManipuladorDeImagens manipuladorDeImagens;
+    //ImagemComEtiqueta imagem1reduzida = (ImagemComEtiqueta) ManipuladorDeImagens.reduzImagem(imagem1, 2);
 
-    ImagemComEtiqueta imagem1reduzida = (ImagemComEtiqueta) ManipuladorDeImagens.reduzImagem(imagem1, 2);
+
+    public void adicionaImagem(ImagemComEtiqueta imagem) {
+        asMinhasImagens.add(imagem);
+    }
+
+
+    public void dadosImagem (){
+     String  nome = imagem1.obterNomeImagem();
+     System.out.println(nome);
+    }
+
+
+
 }

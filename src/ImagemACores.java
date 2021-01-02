@@ -1,5 +1,3 @@
-
-
 /**
  * Representa uma ImagemACores.
  * Os dados da imagem estão representados numa matriz:
