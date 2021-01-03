@@ -1,6 +1,8 @@
-import java.util.Scanner;
-
 public class ManipuladorDeImagens {
+
+    private static int larguraCorrigida;
+    private static int alturaCorrigida;
+    private static int escala;
 
     ImagemACores imagem = new ImagemACores(20, 20);
 
@@ -8,15 +10,20 @@ public class ManipuladorDeImagens {
 
     public static ImagemACores reduzImagem(ImagemACores imagemAAlterar, int escala) {
 
+
+
+        return cicloPixeis(imagemAAlterar, escala);
+
+        /*
         int larguraDaImagemAAlterar = imagemAAlterar.obterLargura();
         int alturaDaImagemAAlterar = imagemAAlterar.obterAltura();
         int larguraMax = ((int)larguraDaImagemAAlterar/escala)*escala;
         int alturaMax = ((int)alturaDaImagemAAlterar/escala)*escala;
 
-        /*int valorEscala;
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("indique a escala ");
-        valorEscala = scanner.nextInt();*/
+        //int valorEscala;
+        //Scanner scanner = new Scanner(System.in);
+        //System.out.println("indique a escala ");
+        //valorEscala = scanner.nextInt();
 
         // O que é que acontece se a escala for ímpar?
         // O que é que acontece se a imagem não for quadrada?
@@ -24,14 +31,7 @@ public class ManipuladorDeImagens {
 
         ImagemACores imagemNova = new ImagemACores(larguraDaImagemAAlterar/escala, alturaDaImagemAAlterar/escala);
 
-        // Imagem 4x4
-        //   0      1     2     3
-        //0: [0, 0][0, 1][0, 2][0, 3]
-        //1: [1, 0][1, 1][1, 2][1, 3]
-        //2: [2, 0][2, 1][2, 2][2, 3]
-        //3: [3, 0][3, 1][3, 2][3, 3]
 
-        //System.out.println("Working Directory = " + System.getProperty("user.dir"));
 
         for(int xQuadradoFora = 0; xQuadradoFora < larguraMax; xQuadradoFora+=escala) {
             for(int yQuadradoFora = 0; yQuadradoFora < alturaMax; yQuadradoFora+=escala) {
@@ -65,9 +65,9 @@ public class ManipuladorDeImagens {
         }
 
         // Isto não é suposto ficar aqui, é só para testes!
-        imagemNova.escreverParaDisco("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto\\images\\bugsbunny_reduz.png", "png");
+        imagemNova.escreverParaDisco("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\bugsbunny_reduz.png", "png");
 
-        return imagemNova;
+        return imagemNova; */
     }
 
 // AUMENTA ***************************************************************************************************************************
@@ -122,21 +122,37 @@ public class ManipuladorDeImagens {
             }
 
         }
-        imagemMaior.escreverParaDisco("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto\\images\\bugsbunny_aumenta.png","png");
+        imagemMaior.escreverParaDisco("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\bugsbunny_aumenta.png","png");
         return imagemMaior;
     }
 
 // PIXELIZA *************************************************************************************************************************
-    public static ImagemACores pixelizaImagem(ImagemACores imagemAPixelizar, int escala) {
-        int largura = imagemAPixelizar.obterLargura();
-        int altura = imagemAPixelizar.obterAltura();
-        int larguraMax= ((int)largura/escala)*escala;
-        int alturaMax= ((int)altura/escala)*escala;
+    public static  ImagemACores pixelizaImagem(ImagemACores imagemAPixelizar, int escala) {
+       //int largura = imagemAPixelizar.obterLargura();
+        //int altura = imagemAPixelizar.obterAltura();
 
-        ImagemACores imagemNova = new ImagemACores(largura, altura);
 
-        for(int xQuadradoFora = 0; xQuadradoFora < larguraMax; xQuadradoFora+=escala) {
-            for (int yQuadradoFora = 0; yQuadradoFora < alturaMax; yQuadradoFora += escala) {
+
+        return cicloPixeis(imagemAPixelizar, escala);
+
+
+
+
+    }
+
+    //Metodo para ler os pixeis à volta ******************************************************************************
+
+    public static ImagemACores cicloPixeis(ImagemACores imagemAManipular, int escala) {
+        int largura = imagemAManipular.obterLargura();
+        int altura = imagemAManipular.obterAltura();
+        //ajustar as medidas para evitar sair dos limites da imagem:
+        int larguraCorrigida= ((int)largura/escala)*escala;
+        int alturaCorrigida= ((int)altura/escala)*escala;
+
+        ImagemACores imagemResultante = new ImagemACores(larguraCorrigida, alturaCorrigida);
+
+        for(int xQuadradoFora = 0; xQuadradoFora < larguraCorrigida; xQuadradoFora+=escala) {
+            for (int yQuadradoFora = 0; yQuadradoFora < alturaCorrigida; yQuadradoFora += escala) {
 
                 int acumulaR = 0;
                 int acumulaG = 0;
@@ -144,7 +160,7 @@ public class ManipuladorDeImagens {
 
                 for (int xQuadradoDentro = xQuadradoFora; xQuadradoDentro < xQuadradoFora + escala; xQuadradoDentro++) {
                     for (int yQuadradoDentro = yQuadradoFora; yQuadradoDentro < yQuadradoFora + escala; yQuadradoDentro++) {
-                        Cor corDoPixel = imagemAPixelizar.obterCor(xQuadradoDentro, yQuadradoDentro);
+                        Cor corDoPixel = imagemAManipular.obterCor(xQuadradoDentro, yQuadradoDentro);
 
                         int r = corDoPixel.obterR();
                         int g = corDoPixel.obterG();
@@ -160,14 +176,16 @@ public class ManipuladorDeImagens {
 
                         Cor corNova = new Cor(mediaR, mediaG, mediaB);
 
-                        imagemNova.mudaCor(xQuadradoDentro, yQuadradoDentro, corNova);
+                        imagemResultante.mudaCor(xQuadradoDentro, yQuadradoDentro, corNova);
                     }
                 }
             }
         }
 
-        imagemNova.escreverParaDisco("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto\\images\\bugsbunny_pixel.png", "png");
+        imagemResultante.escreverParaDisco("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\bugsbunny_pixel.png", "png");
 
-        return imagemNova;
+        return imagemResultante;
     }
+
+
 }

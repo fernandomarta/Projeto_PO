@@ -5,7 +5,7 @@ import java.util.List;
 public class Album {
     ArrayList<ImagemComEtiqueta> asMinhasImagens = new ArrayList<>();
 
-    ManipuladorDeImagens manipuladorDeImagens;
+    //ManipuladorDeImagens manipuladorDeImagens;
 
     private int E = 0;
 
