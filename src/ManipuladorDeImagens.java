@@ -3,16 +3,40 @@ public class ManipuladorDeImagens {
     private static int larguraCorrigida;
     private static int alturaCorrigida;
     private static int escala;
+    private static int factor;
 
     ImagemACores imagem = new ImagemACores(20, 20);
+
+
+
+
+    private String texto;
+    private AlteraImagem strategy;
+
+    public Nome(String texto) {
+        this.texto = texto;
+    }
+
+    public void setAlteraImagem(AlteraImagem strategy) {
+        this.strategy = strategy;
+    }
+
+    public void altera() {
+               strategy.altera();
+    }
+
+
+
+
+
 
 // REDUZ ***********************************************************************************************************************
 
     public static ImagemACores reduzImagem(ImagemACores imagemAAlterar, int escala) {
 
+        factor = 1/escala;
 
-
-        return cicloPixeis(imagemAAlterar, escala);
+        return AlteraImagem.transforma(imagemAAlterar, escala, factor);
 
         /*
         int larguraDaImagemAAlterar = imagemAAlterar.obterLargura();
@@ -131,25 +155,26 @@ public class ManipuladorDeImagens {
        //int largura = imagemAPixelizar.obterLargura();
         //int altura = imagemAPixelizar.obterAltura();
 
+        factor = 1;
 
+        return AlteraImagem.transforma(imagemAPixelizar, escala, factor);
 
-        return cicloPixeis(imagemAPixelizar, escala);
 
 
 
 
     }
 
-    //Metodo para ler os pixeis à volta ******************************************************************************
+    //Metodo para ler os pixeis à volta do pixel e transformar a imagem ****************************************************************
 
-    public static ImagemACores cicloPixeis(ImagemACores imagemAManipular, int escala) {
+    public static ImagemACores transforma(ImagemACores imagemAManipular, int escala, int factor) {
         int largura = imagemAManipular.obterLargura();
         int altura = imagemAManipular.obterAltura();
         //ajustar as medidas para evitar sair dos limites da imagem:
         int larguraCorrigida= ((int)largura/escala)*escala;
         int alturaCorrigida= ((int)altura/escala)*escala;
 
-        ImagemACores imagemResultante = new ImagemACores(larguraCorrigida, alturaCorrigida);
+        ImagemACores imagemResultante = new ImagemACores(larguraCorrigida*factor, alturaCorrigida*factor);
 
         for(int xQuadradoFora = 0; xQuadradoFora < larguraCorrigida; xQuadradoFora+=escala) {
             for (int yQuadradoFora = 0; yQuadradoFora < alturaCorrigida; yQuadradoFora += escala) {
@@ -186,6 +211,7 @@ public class ManipuladorDeImagens {
 
         return imagemResultante;
     }
+
 
 
 }

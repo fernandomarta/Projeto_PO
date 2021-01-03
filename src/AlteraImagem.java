@@ -1,4 +1,13 @@
-public class AlteraImagem {
+public abstract class AlteraImagem {
 
-    
+    public abstract void altera();
+
+
 }
+
+
+/*
+
+
+
+    */
