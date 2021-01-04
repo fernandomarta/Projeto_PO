@@ -6,6 +6,10 @@ public class ManipuladorDeImagens {
 
     ImagemACores imagem = new ImagemACores(20, 20);
 
+
+
+
+
 // REDUZ ***********************************************************************************************************************
 
     public static ImagemACores reduzImagem(ImagemACores imagemAAlterar, int escala) {
@@ -142,25 +146,44 @@ public class ManipuladorDeImagens {
 
     //Metodo para ler os pixeis à volta ******************************************************************************
 
-    public static ImagemACores cicloPixeis(ImagemACores imagemAManipular, int escala) {
+    public static ImagemACores transforma (ImagemACores imagemAManipular, int escala) {
         int largura = imagemAManipular.obterLargura();
         int altura = imagemAManipular.obterAltura();
         //ajustar as medidas para evitar sair dos limites da imagem:
         int larguraCorrigida= ((int)largura/escala)*escala;
         int alturaCorrigida= ((int)altura/escala)*escala;
 
-        ImagemACores imagemResultante = new ImagemACores(larguraCorrigida, alturaCorrigida);
+        ImagemACores imagemResultante = criarNovaImagem(12,12);
 
-        for(int xQuadradoFora = 0; xQuadradoFora < larguraCorrigida; xQuadradoFora+=escala) {
-            for (int yQuadradoFora = 0; yQuadradoFora < alturaCorrigida; yQuadradoFora += escala) {
+        pintarNovaImagem (imagemAManipular, imagemResultante);
+
+        imagemResultante.escreverParaDisco("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\bugsbunny_pixel.png", "png");
+
+        return imagemResultante;
+    }
+
+// metodo para criar nova imagem em branco **************************************************************************************
+
+    public static ImagemACores criarNovaImagem (int largurafinal, int alturafinal) {
+
+        ImagemACores imagemResultante = new ImagemACores(largurafinal, alturafinal);
+        return imagemResultante;
+    }
+
+
+// metodo para obter a média das cores dos pixeis adjacentes e registar na nova Imagem ********************************************
+
+    public static void pintarNovaImagem (ImagemACores imagemAManipular, ImagemACores imagemResultante) {
+        for(int xQuadradoReferencia = 0; xQuadradoReferencia < larguraCorrigida; xQuadradoReferencia+=escala) {
+            for (int yQuadradoReferencia = 0; yQuadradoReferencia < alturaCorrigida; yQuadradoReferencia += escala) {
 
                 int acumulaR = 0;
                 int acumulaG = 0;
                 int acumulaB = 0;
 
-                for (int xQuadradoDentro = xQuadradoFora; xQuadradoDentro < xQuadradoFora + escala; xQuadradoDentro++) {
-                    for (int yQuadradoDentro = yQuadradoFora; yQuadradoDentro < yQuadradoFora + escala; yQuadradoDentro++) {
-                        Cor corDoPixel = imagemAManipular.obterCor(xQuadradoDentro, yQuadradoDentro);
+                for (int xQuadradoAdjacente = xQuadradoReferencia; xQuadradoAdjacente < xQuadradoReferencia + escala; xQuadradoAdjacente++) {
+                    for (int yQuadradoAdjacente = yQuadradoReferencia; yQuadradoAdjacente < yQuadradoReferencia + escala; yQuadradoAdjacente++) {
+                        Cor corDoPixel = imagemAManipular.obterCor(xQuadradoAdjacente, yQuadradoAdjacente);
 
                         int r = corDoPixel.obterR();
                         int g = corDoPixel.obterG();
@@ -175,17 +198,12 @@ public class ManipuladorDeImagens {
                         int mediaB = acumulaB / ((int)Math.pow(escala, 2));
 
                         Cor corNova = new Cor(mediaR, mediaG, mediaB);
-
-                        imagemResultante.mudaCor(xQuadradoDentro, yQuadradoDentro, corNova);
+                        imagemResultante.mudaCor(xQuadradoAdjacente, yQuadradoAdjacente, corNova);
                     }
                 }
             }
         }
 
-        imagemResultante.escreverParaDisco("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\bugsbunny_pixel.png", "png");
 
-        return imagemResultante;
     }
-
-
 }
