@@ -9,17 +9,17 @@ public class Main {
         // Manipulador Imagens testes
 
         //ImagemACores tomEJerry = new ImagemACores("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\tomjerrypng.png");
-        //ImagemACores bugsBunny = new ImagemACores("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\bugsBunny.png");
+        ImagemACores bugsBunny = new ImagemACores("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\bugsBunny.png");
         //ImagemACores Jerry = new ImagemACores("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\jerry.png");
 
         //ImagemACores tomEJerryReduzido = ManipuladorDeImagens.reduzImagem(tomEJerry, 2);
-        //ImagemACores bugsBunnyReduzido = ManipuladorDeImagens.reduzImagem(bugsBunny, 4);
+        ImagemACores bugsBunnyReduzido = ManipuladorDeImagens.reduzImagem(bugsBunny, 4);
         //ImagemACores bugsBunnyPixel = ManipuladorDeImagens.pixelizaImagem(bugsBunny, 3);
         //ImagemACores tomEJerryPixel = ManipuladorDeImagens.pixelizaImagem(tomEJerry, 2);
         //ImagemACores JerryAumentado = ManipuladorDeImagens.aumentaImagem(Jerry);
 
         // ImagemComEtiqueta testes
-
+/*
         ImagemComEtiqueta imagemEtiqueta = new ImagemComEtiqueta("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\jerry.png", "rato");
         ImagemComEtiqueta imagemEtiqueta2 = new ImagemComEtiqueta("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\tomjerrypng.png", "gato e rato");
         ImagemComEtiqueta imagemEtiqueta3 = new ImagemComEtiqueta("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\bugsbunny.png", "coelho");
@@ -47,5 +47,7 @@ public class Main {
         album.aumentarImagemExibicao();
         System.out.println("-------------------------------------------------");
         album.pixelizarImagemExibicao();
+    */
     }
+
 }

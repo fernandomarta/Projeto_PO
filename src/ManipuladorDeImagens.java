@@ -2,7 +2,10 @@ import java.util.Scanner;
 
 public class ManipuladorDeImagens {
 
-    ImagemACores imagem = new ImagemACores(20, 20);
+    //ImagemACores imagem = new ImagemACores(20, 20);
+    int factor, escala, largurafinal, alturafinal;
+
+
 
 // REDUZ ***********************************************************************************************************************
 
@@ -12,6 +15,9 @@ public class ManipuladorDeImagens {
         int alturaDaImagemAAlterar = imagemAAlterar.obterAltura();
         int larguraMax = ((int)larguraDaImagemAAlterar/escala)*escala;
         int alturaMax = ((int)alturaDaImagemAAlterar/escala)*escala;
+        int largurafinal = larguraMax/escala;
+        int alturafinal = alturaMax/escala;
+        int factor = 1/2;
 
         /*int valorEscala;
         Scanner scanner = new Scanner(System.in);
@@ -21,19 +27,12 @@ public class ManipuladorDeImagens {
         // O que é que acontece se a escala for ímpar?
         // O que é que acontece se a imagem não for quadrada?
         // O que é que acontece, se as dimensões da imagem destino não baterem certo com a escala?
-
-        ImagemACores imagemNova = new ImagemACores(larguraDaImagemAAlterar/escala, alturaDaImagemAAlterar/escala);
-
-        // Imagem 4x4
-        //   0      1     2     3
-        //0: [0, 0][0, 1][0, 2][0, 3]
-        //1: [1, 0][1, 1][1, 2][1, 3]
-        //2: [2, 0][2, 1][2, 2][2, 3]
-        //3: [3, 0][3, 1][3, 2][3, 3]
-
         //System.out.println("Working Directory = " + System.getProperty("user.dir"));
+        ImagemACores imagemResultante = new ImagemACores(larguraDaImagemAAlterar/escala, alturaDaImagemAAlterar/escala);
 
-        for(int xQuadradoFora = 0; xQuadradoFora < larguraMax; xQuadradoFora+=escala) {
+        pintarNovaImagem (imagemAAlterar, imagemResultante, largurafinal, alturafinal, escala, factor);
+
+     /*   for(int xQuadradoFora = 0; xQuadradoFora < larguraMax; xQuadradoFora+=escala) {
             for(int yQuadradoFora = 0; yQuadradoFora < alturaMax; yQuadradoFora+=escala) {
 
                 int acumulaR = 0;
@@ -58,16 +57,16 @@ public class ManipuladorDeImagens {
 
                         Cor corNova = new Cor(mediaR, mediaG, mediaB);
 
-                        imagemNova.mudaCor(xQuadradoFora/escala, yQuadradoFora/escala, corNova);
+                        imagemResultante.mudaCor(xQuadradoFora/escala, yQuadradoFora/escala, corNova);
                     }
                 }
             }
         }
-
+*/
         // Isto não é suposto ficar aqui, é só para testes!
-        imagemNova.escreverParaDisco("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\bugsbunny_reduz.png", "png");
+        imagemResultante.escreverParaDisco("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\bugsbunny_reduz.png", "png");
 
-        return imagemNova;
+        return imagemResultante;
     }
 
 // AUMENTA ***************************************************************************************************************************
@@ -170,4 +169,44 @@ public class ManipuladorDeImagens {
 
         return imagemNova;
     }
+
+
+
+    // metodo para obter a média das cores dos pixeis adjacentes e registar na nova Imagem ********************************************
+
+    public static ImagemACores pintarNovaImagem (ImagemACores imagemAManipular, ImagemACores imagemResultante, largurafinal, alturafinal, escala,factor) {
+        for (int xQuadradoReferencia = 0; xQuadradoReferencia < largurafinal; xQuadradoReferencia += escala) {
+            for (int yQuadradoReferencia = 0; yQuadradoReferencia < alturafinal; yQuadradoReferencia += escala) {
+
+                int acumulaR = 0;
+                int acumulaG = 0;
+                int acumulaB = 0;
+
+                for (int xQuadradoAdjacente = xQuadradoReferencia; xQuadradoAdjacente < xQuadradoReferencia + escala; xQuadradoAdjacente++) {
+                    for (int yQuadradoAdjacente = yQuadradoReferencia; yQuadradoAdjacente < yQuadradoReferencia + escala; yQuadradoAdjacente++) {
+                        Cor corDoPixel = imagemAManipular.obterCor(xQuadradoAdjacente, yQuadradoAdjacente);
+
+                        int r = corDoPixel.obterR();
+                        int g = corDoPixel.obterG();
+                        int b = corDoPixel.obterB();
+
+                        acumulaR += r;
+                        acumulaG += g;
+                        acumulaB += b;
+
+                        int mediaR = acumulaR / ((int) Math.pow(escala, 2));
+                        int mediaG = acumulaG / ((int) Math.pow(escala, 2));
+                        int mediaB = acumulaB / ((int) Math.pow(escala, 2));
+
+                        Cor corNova = new Cor(mediaR, mediaG, mediaB);
+                        imagemResultante.mudaCor(xQuadradoAdjacente*factor, yQuadradoAdjacente*factor, corNova);
+                    }
+                }
+            }
+        }
+
+        return imagemResultante;
+    }
+
 }
+
