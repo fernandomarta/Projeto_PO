@@ -65,7 +65,7 @@ public class ManipuladorDeImagens {
         }
 
         // Isto não é suposto ficar aqui, é só para testes!
-        imagemNova.escreverParaDisco("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto\\images\\bugsbunny_reduz.png", "png");
+        imagemNova.escreverParaDisco("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\bugsbunny_reduz.png", "png");
 
         return imagemNova;
     }
@@ -122,7 +122,7 @@ public class ManipuladorDeImagens {
             }
 
         }
-        imagemMaior.escreverParaDisco("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto\\images\\bugsbunny_aumenta.png","png");
+        imagemMaior.escreverParaDisco("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\bugsbunny_aumenta.png","png");
         return imagemMaior;
     }
 
@@ -166,7 +166,7 @@ public class ManipuladorDeImagens {
             }
         }
 
-        imagemNova.escreverParaDisco("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto\\images\\bugsbunny_pixel.png", "png");
+        imagemNova.escreverParaDisco("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\bugsbunny_pixel.png", "png");
 
         return imagemNova;
     }
