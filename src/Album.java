@@ -1,114 +1,58 @@
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class Album {
-    ArrayList<ImagemComEtiqueta> asMinhasImagens = new ArrayList<>();
 
-    ManipuladorDeImagens manipuladorDeImagens;
+    ArrayList<ImagemComEtiqueta> albumImagens = new ArrayList<>();
+    ImagemComEtiqueta imagemEmExibicao;
 
-    private int E = 0;
 
-    public List<ImagemComEtiqueta> getImagens(){
-        return asMinhasImagens;
+    // (1º metodo) Adicionar Imagem:
+    public void adicionarImagem(String novaImagem, String novoNome) {
+        ImagemComEtiqueta image = new ImagemComEtiqueta(novaImagem, novoNome);
+        albumImagens.add(image);
+        imagemEmExibicao = albumImagens.get(0);
+
     }
 
-    public void mostrarDados(ImagemComEtiqueta imagemComEtiqueta){
-        ImagemComEtiqueta imagemAtual = asMinhasImagens.get(E);
-        System.out.print("|| < " + (E+1) + " >: < " + imagemAtual.obterNomeImagem()
-                            + " > - [< " + imagemAtual.getLarguraImagem()
-                            + " > x < " + imagemAtual.getAlturaImagem() + ">] (E) ||");
+    // (2º metodo) Obter Imagem em Exibição:
+    public void obterImagemExibicao() {
+        imprimirImagem(imagemEmExibicao,1);
     }
-
-    public void mostrarDadosAnterior(ImagemComEtiqueta imagemComEtiqueta) {
-        if(E > 0) {
-            ImagemComEtiqueta imagemAtual = asMinhasImagens.get(E-1);
-            ManipuladorDeImagens.reduzImagem(imagemAtual, 2);
-            ImagemACores altReduzida = ManipuladorDeImagens.reduzImagem(imagemAtual, 2);
-            System.out.print("|| < " + (E) + " >: < " + imagemAtual.obterNomeImagem()
-                                + " > - [< " + altReduzida.obterLargura()
-                                + " > x < " + altReduzida.obterAltura() + ">] ");
-        }else {
-            System.out.print(" Não existem imagens anteriores!");
+    // (3º metodo) Obter Imagem reduzida anterior:
+    public void obterImagemReduzidaAnterior () {
+        if (verificarposicao() != 0 ) {
+            ImagemComEtiqueta imagem = albumImagens.get(albumImagens.indexOf(imagemEmExibicao) - 1);
+            ImagemACores imagemCor = ManipuladorDeImagens.reduzImagem(albumImagens.get(albumImagens.indexOf(imagemEmExibicao) - 1), 2);
+            imprimirImagem (imagem, -1);
         }
     }
 
-    public void mostrarDadosSeguinte(ImagemComEtiqueta imagemComEtiqueta) {
-        if(E < asMinhasImagens.size() - 1) {
-            ImagemComEtiqueta imagemAtual = asMinhasImagens.get(E+1);
-            ManipuladorDeImagens.reduzImagem(imagemAtual, 2);
-            ImagemACores altReduzida = ManipuladorDeImagens.reduzImagem(imagemAtual, 2);
-            System.out.println(" < " + (E+2) + " >: < " + imagemAtual.obterNomeImagem()
-                                + " > - [< " + altReduzida.obterLargura()
-                                + " > x < " + altReduzida.obterAltura() + ">] ||");
-        }else {
-            System.out.println(" Não existem imagens seguintes!");
+    // (3º metodo) Obter Imagem reduzida seguinte:
+    public void obterImagemReduzidaSeguinte () {
+        if (verificarposicao() != 1 ) {
+            ImagemComEtiqueta imagem = albumImagens.get(albumImagens.indexOf(imagemEmExibicao) + 1);
+            ImagemACores imagemCor = ManipuladorDeImagens.reduzImagem(albumImagens.get(albumImagens.indexOf(imagemEmExibicao) + 1), 2);
+            imprimirImagem(imagem, 1);
         }
     }
 
-    public void adicionaImagem(ImagemComEtiqueta imagemAAdicionar) {
-        asMinhasImagens.add(imagemAAdicionar);
+
+    public void imprimirImagem ( ImagemComEtiqueta imagem, int varIndex) {
+        System.out.print("||" + (albumImagens.indexOf(imagem)+1) + ": " + imagem.obterNomeImagem()
+                + " - [" + imagem.obterLargura() + " x " + imagem.obterAltura() + "] (E) ||");
     }
 
-    public void imagemExibicao() {
-        ImagemComEtiqueta imagemAtual = asMinhasImagens.get(E);
-        mostrarDadosAnterior(imagemAtual);
-        mostrarDados(imagemAtual);
-        mostrarDadosSeguinte(imagemAtual);
-    }
 
-    public void imagemSeguinte() {
-        if(E == asMinhasImagens.size()){
+    public int verificarposicao() {
+        if(albumImagens.indexOf(imagemEmExibicao) == albumImagens.size()){
             System.out.println("Está na última imagem!");
-        }else {
-            E++;
+            return 1;
         }
-    }
-
-    public void imagemAnterior() {
-        if(E == 0){
-            System.out.println("Está na primeira imagem!");
-        }else {
-            E--;
+        else  if(albumImagens.indexOf(imagemEmExibicao) == 0) {
+            System.out.print("Está na primeira imagem!");
+            return 0;
         }
-    }
-
-    public void reduzirAnterior() {
-        ImagemComEtiqueta imagemAtual = asMinhasImagens.get(E--);
-        ManipuladorDeImagens.reduzImagem(imagemAtual, 2);
-        ImagemACores altReduzida = ManipuladorDeImagens.reduzImagem(imagemAtual, 2);
-    }
-
-    public void reduzirSeguinte() {
-        ImagemComEtiqueta imagemAtual = asMinhasImagens.get(E++);
-        ManipuladorDeImagens.reduzImagem(imagemAtual, 2);
-        ImagemACores altReduzida = ManipuladorDeImagens.reduzImagem(imagemAtual, 2);
-    }
-
-    public void aumentarImagemExibicao(){
-        ImagemComEtiqueta imagemAtual = asMinhasImagens.get(E);
-        mostrarDadosAnterior(imagemAtual);
-        ManipuladorDeImagens.aumentaImagem(imagemAtual);
-        ImagemACores altAumentada = ManipuladorDeImagens.aumentaImagem(imagemAtual);
-        System.out.print("|| < " + (E+1) + " >: < " + imagemAtual.obterNomeImagem()
-                + " > - [< " + altAumentada.obterLargura()
-                + " > x < " + altAumentada.obterAltura() + ">] (E) ||");
-        mostrarDadosSeguinte(imagemAtual);
-    }
-
-    public void pixelizarImagemExibicao(){
-        ImagemComEtiqueta imagemAtual = asMinhasImagens.get(E);
-        mostrarDadosAnterior(imagemAtual);
-        ManipuladorDeImagens.pixelizaImagem(imagemAtual, 2);
-        ImagemACores altPixelizada = ManipuladorDeImagens.aumentaImagem(imagemAtual);
-        System.out.print("|| < " + (E+1) + " >: < " + imagemAtual.obterNomeImagem()
-                + " > - [< " + altPixelizada.obterLargura()
-                + " > x < " + altPixelizada.obterAltura() + ">] (E) ||");
-        mostrarDadosSeguinte(imagemAtual);
-    }
-
-    public int getE () {
-        return E;
+        return 2;
     }
 
 }

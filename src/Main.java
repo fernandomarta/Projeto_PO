@@ -2,7 +2,8 @@
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+
+	// ATENÇÃO: priemiro metodo a correr deverá ser Adicionar Imagem - adicionarImagem()
 
         ManipuladorDeImagens manipuladorDeImagens;
 
@@ -20,20 +21,20 @@ public class Main {
 
         // ImagemComEtiqueta testes
 
-        ImagemComEtiqueta imagemEtiqueta = new ImagemComEtiqueta("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\jerry.png", "rato");
-        ImagemComEtiqueta imagemEtiqueta2 = new ImagemComEtiqueta("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\tomjerrypng.png", "gato e rato");
-        ImagemComEtiqueta imagemEtiqueta3 = new ImagemComEtiqueta("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\bugsbunny.png", "coelho");
+       // ImagemComEtiqueta imagemEtiqueta = new ImagemComEtiqueta("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\jerry.png", "rato");
+        //ImagemComEtiqueta imagemEtiqueta2 = new ImagemComEtiqueta("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\tomjerrypng.png", "gato e rato");
+        //ImagemComEtiqueta imagemEtiqueta3 = new ImagemComEtiqueta("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\bugsbunny.png", "coelho");
         //imagemEtiqueta.mostrarDados(imagemEtiqueta);
 
         Album album = new Album();
 
-        album.adicionaImagem(imagemEtiqueta);
+        album.adicionarImagem("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\jerry.png", "rato");
         //album.mostrarDados(imagemEtiqueta);
-        album.adicionaImagem(imagemEtiqueta2);
+        album.adicionarImagem("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\tomjerrypng.png", "gato e rato");
         //album.mostrarDados(imagemEtiqueta2);
-        album.adicionaImagem(imagemEtiqueta3);
+        album.adicionarImagem("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\bugsbunny.png", "coelho");
         //album.pixelizarImagemExibicao();
-        album.imagemExibicao();
+       /* album.imagemExibicao();
         album.imagemSeguinte();
         System.out.println("-------------------------------------------------");
         album.imagemExibicao();
@@ -46,6 +47,8 @@ public class Main {
         System.out.println("-------------------------------------------------");
         album.aumentarImagemExibicao();
         System.out.println("-------------------------------------------------");
-        album.pixelizarImagemExibicao();
+        album.pixelizarImagemExibicao();*/
+        //album.getImagens();
+        album.obterImagemReduzidaAnterior();
     }
 }

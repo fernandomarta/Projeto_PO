@@ -3,7 +3,7 @@ public class ImagemComEtiqueta extends ImagemACores {
     private String nomeImagem;
     private int alturaImagem, larguraImagem;
     private String ficheiro;
-    private int Exibicao = 0;
+    //private boolean EmExibicao = false;
 
     ImagemComEtiqueta(String ficheiro, String nomeImagem) {
         super(ficheiro);
