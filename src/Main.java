@@ -33,6 +33,8 @@ public class Main {
         album.adicionarImagem("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\tomjerrypng.png", "gato e rato");
         //album.mostrarDados(imagemEtiqueta2);
         album.adicionarImagem("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\bugsbunny.png", "coelho");
+        album.adicionarImagem("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\supermario.png", "mario");
+
         //album.pixelizarImagemExibicao();
        /* album.imagemExibicao();
         album.imagemSeguinte();
@@ -49,6 +51,21 @@ public class Main {
         System.out.println("-------------------------------------------------");
         album.pixelizarImagemExibicao();*/
         //album.getImagens();
-        album.obterImagemReduzidaAnterior();
+        //album.obterImagemReduzidaAnterior();
+        album.obterImagemExibicao();
+        System.out.println("-------------------------------------------------");
+        // album.obterImagemReduzidaSeguinte();
+        //System.out.println("-------------------------------------------------");
+        album.mudarImagemSeguinte ();
+        System.out.println("-------------------------------------------------");
+        album.obterImagemExibicao();
+        System.out.println("-------------------------------------------------");
+        System.out.println("-------------------------------------------------");
+        // album.mudarImagemSeguinte ();
+        //album.obterImagemExibicao();
+        //album.mudarImagemSeguinte ();
+        //album.obterImagemExibicao();
+        album.mostrarTodoAlbum ();
+
     }
 }
