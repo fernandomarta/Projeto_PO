@@ -170,4 +170,45 @@ public class ManipuladorDeImagens {
 
         return imagemNova;
     }
+
+
+    // metodo para obter a média das cores dos pixeis adjacentes  ********************************************
+
+    public static Cor obterMediaDaCor (ImagemACores imagemAManipular, ImagemACores imagemResultante, int largurafinal, int alturafinal, int escala) {
+        Cor corNova;
+        for (int xQuadradoReferencia = 0; xQuadradoReferencia < largurafinal; xQuadradoReferencia += escala) {
+            for (int yQuadradoReferencia = 0; yQuadradoReferencia < alturafinal; yQuadradoReferencia += escala) {
+
+                int acumulaR = 0;
+                int acumulaG = 0;
+                int acumulaB = 0;
+
+                for (int xQuadradoAdjacente = xQuadradoReferencia; xQuadradoAdjacente < xQuadradoReferencia + escala; xQuadradoAdjacente++) {
+                    for (int yQuadradoAdjacente = yQuadradoReferencia; yQuadradoAdjacente < yQuadradoReferencia + escala; yQuadradoAdjacente++) {
+                        Cor corDoPixel = imagemAManipular.obterCor(xQuadradoAdjacente, yQuadradoAdjacente);
+
+                        int r = corDoPixel.obterR();
+                        int g = corDoPixel.obterG();
+                        int b = corDoPixel.obterB();
+
+                        acumulaR += r;
+                        acumulaG += g;
+                        acumulaB += b;
+                    }
+                }
+
+                        int mediaR = acumulaR / ((int) Math.pow(escala, 2));
+                        int mediaG = acumulaG / ((int) Math.pow(escala, 2));
+                        int mediaB = acumulaB / ((int) Math.pow(escala, 2));
+
+                        Cor corNova = new Cor(mediaR, mediaG, mediaB);
+
+            }
+        }
+    return corNova;
+    }
+
+
+
+
 }
