@@ -54,7 +54,7 @@ public class Main {
         //album.obterImagemReduzidaAnterior();
         album.obterImagemExibicao();
         System.out.println("-------------------------------------------------");
-        // album.obterImagemReduzidaSeguinte();
+         album.obterImagemReduzidaSeguinte();
         //System.out.println("-------------------------------------------------");
         album.mudarImagemSeguinte ();
         System.out.println("-------------------------------------------------");
@@ -65,7 +65,7 @@ public class Main {
         //album.obterImagemExibicao();
         //album.mudarImagemSeguinte ();
         //album.obterImagemExibicao();
-        album.mostrarTodoAlbum ();
+        //album.mostrarTodoAlbum ();
 
     }
 }

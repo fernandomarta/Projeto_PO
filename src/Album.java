@@ -41,6 +41,7 @@ public class Album {
         if (verificarposicao('s') != 1 ) {
             ImagemComEtiqueta imagem = albumImagens.get(albumImagens.indexOf(imagemEmExibicao) + 1);
             ImagemACores imagemCor = ManipuladorDeImagens.reduzImagem(imagem, 2);
+             //int larggg = ManipuladorDeImagens.reduzImagem(imagem, 2).obterLargura(); outra forma  de obter as dimensões da imagem
 
             System.out.print("||" + (albumImagens.indexOf(imagem)+1) + ": " + imagem.obterNomeImagem()
                     + " - [" + imagemCor.obterLargura() + " x " + imagemCor.obterAltura() + "] ||");
