@@ -63,10 +63,10 @@ public class Main {
         System.out.println("---------------------- ImagemReduzidaAnterior ");
         album.obterImagemReduzidaAnterior();
 
-        System.out.println("");
+        System.out.println(" ");
         System.out.println("---------------------- Ampliar Imagem ");
         album.ampliarImagem();
-        System.out.println("");
+        System.out.println(" ");
         System.out.println("---------------------- Imagem em Exibição: ");
         album.obterImagemExibicao();
 
@@ -75,7 +75,7 @@ public class Main {
         System.out.println("---------------------- Imagem em Exibição: ");
         album.obterImagemExibicao();
 
-        System.out.println("");
+        System.out.println(" ");
         album.mostrarTodoAlbum ();
 
     }
