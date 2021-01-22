@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.SortedMap;
 
 public class Album {
 
@@ -15,11 +14,11 @@ public class Album {
 
     }
 
-    // (2º metodo) Obter Imagem em Exibição acompanhada das imagenslaterais reduzidas:
+    // (2º metodo) Obter Imagem em Exibição acompanhada das imagens laterais reduzidas:
     public void obterImagemExibicao() {
         obterImagemReduzidaAnterior ();
-        System.out.print("||" + (albumImagens.indexOf(imagemEmExibicao)+1) + ": " + imagemEmExibicao.obterNomeImagem()
-                + " - [" + imagemEmExibicao.obterLargura() + " x " + imagemEmExibicao.obterAltura() + "] (E) ||");
+        System.out.print("| " + (albumImagens.indexOf(imagemEmExibicao)+1) + ": " + imagemEmExibicao.obterNomeImagem()
+                + " - [" + imagemEmExibicao.obterLargura() + " x " + imagemEmExibicao.obterAltura() + "] (E) |");
         obterImagemReduzidaSeguinte ();
     }
 
@@ -30,8 +29,8 @@ public class Album {
             ImagemComEtiqueta imagem = albumImagens.get(albumImagens.indexOf(imagemEmExibicao) - 1);
             ImagemACores imagemCor = ManipuladorDeImagens.reduzImagem(imagem, 2);
 
-            System.out.print("||" + (albumImagens.indexOf(imagem)+1) + ": " + imagem.obterNomeImagem()
-                    + " - [" + imagemCor.obterLargura() + " x " + imagemCor.obterAltura() + "] ||");
+            System.out.print("|| " + (albumImagens.indexOf(imagem)+1) + ": " + imagem.obterNomeImagem()
+                    + " - [" + imagemCor.obterLargura() + " x " + imagemCor.obterAltura() + "] |");
 
         }
     }
@@ -41,9 +40,8 @@ public class Album {
         if (verificarposicao('s') != 1 ) {
             ImagemComEtiqueta imagem = albumImagens.get(albumImagens.indexOf(imagemEmExibicao) + 1);
             ImagemACores imagemCor = ManipuladorDeImagens.reduzImagem(imagem, 2);
-             //int larggg = ManipuladorDeImagens.reduzImagem(imagem, 2).obterLargura(); outra forma  de obter as dimensões da imagem
 
-            System.out.print("||" + (albumImagens.indexOf(imagem)+1) + ": " + imagem.obterNomeImagem()
+            System.out.println("| " + (albumImagens.indexOf(imagem)+1) + ": " + imagem.obterNomeImagem()
                     + " - [" + imagemCor.obterLargura() + " x " + imagemCor.obterAltura() + "] ||");
 
         }
@@ -53,7 +51,6 @@ public class Album {
     public void mudarImagemSeguinte () {
         if (verificarposicao('s') != 1) {
             imagemEmExibicao = albumImagens.get(albumImagens.indexOf(imagemEmExibicao) + 1);
-            System.out.println("index da img em exib: " + albumImagens.indexOf(imagemEmExibicao));
         }
     }
 
@@ -64,7 +61,7 @@ public class Album {
         }
     }
 
-    // (7ºmétodo) Obter Imagem ampliada da imagem em Exibição, sem modificar:     ****** Atenção Overloading !!! *********
+    // (7ºmétodo) Obter Imagem ampliada da imagem em Exibição, sem modificar:
     public void ampliarImagem (){
 
         ImagemACores imagemAmpliada = ManipuladorDeImagens.aumentaImagem(imagemEmExibicao);
@@ -82,10 +79,11 @@ public class Album {
 
     // (9º método) Mostrar o conteúdo do Album:
     public void mostrarTodoAlbum () {
+        System.out.println("Imagens de todo o Album:");
         for (ImagemComEtiqueta img : albumImagens) {
             if (img.equals(imagemEmExibicao)) {
                 System.out.println("||" + (albumImagens.indexOf(imagemEmExibicao)+1) + ": " + imagemEmExibicao.obterNomeImagem()
-                        + " - [" + imagemEmExibicao.obterLargura() + " x " + imagemEmExibicao.obterAltura() + "] (E) ||");
+                        + " - [" + imagemEmExibicao.obterLargura() + " x " + imagemEmExibicao.obterAltura() + "] (E) ");
             }
             else {
                 System.out.println("||" + (albumImagens.indexOf(img) + 1) + ": " + img.obterNomeImagem()
@@ -97,16 +95,16 @@ public class Album {
 
     // método para verificar posição no array e impedir que saia fora do range:
         public int verificarposicao (char verificar) {
-            if (verificar=='s') {
+            if (verificar=='s') {   // com a letra 's' testamos a posição seguinte
                 if (albumImagens.indexOf(imagemEmExibicao)+1 == albumImagens.size()) {
-                    System.out.println("Não existem imagens a seguir");
+                    System.out.println("| Não existem imagens a seguir");
                     return 1;
                 }
             }
 
-            if (verificar=='a') {
+            if (verificar=='a') {   // com a letra 'a' testamos a posição anterior
                 if (albumImagens.indexOf(imagemEmExibicao) == 0) {
-                    System.out.print("Não existem imagens anteriores");
+                    System.out.print("Não existem imagens anteriores |");
                     return 0;
                 }
             }

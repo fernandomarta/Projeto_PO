@@ -3,7 +3,6 @@ public class ImagemComEtiqueta extends ImagemACores {
     private String nomeImagem;
     private int alturaImagem, larguraImagem;
     private String ficheiro;
-    //private boolean EmExibicao = false;
 
     ImagemComEtiqueta(String ficheiro, String nomeImagem) {
         super(ficheiro);
@@ -17,11 +16,6 @@ public class ImagemComEtiqueta extends ImagemACores {
         return ficheiro;
     }
 
-   // public void mostrarDados(ImagemComEtiqueta imagemComEtiqueta){
-   //     System.out.println("nome: " + nomeImagem);
-   //     System.out.println("largura: " + alturaImagem + " altura: " + larguraImagem);
-   //     System.out.println("caminho: " + ficheiro);
-   // }
 
     public String obterNomeImagem() {
         return nomeImagem;

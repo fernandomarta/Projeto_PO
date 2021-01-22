@@ -1,37 +1,20 @@
-import java.util.Scanner;
 
 public class ManipuladorDeImagens {
 
-    ImagemACores imagem = new ImagemACores(20, 20);
 
-// REDUZ ***********************************************************************************************************************
+// METODO REDUZ IMAGEM ***********************************************************************************************************************
 
     public static ImagemACores reduzImagem(ImagemACores imagemAAlterar, int escala) {
 
         int larguraDaImagemAAlterar = imagemAAlterar.obterLargura();
         int alturaDaImagemAAlterar = imagemAAlterar.obterAltura();
-        int larguraMax = ((int)larguraDaImagemAAlterar/escala)*escala;
-        int alturaMax = ((int)alturaDaImagemAAlterar/escala)*escala;
+        int larguraMax = ((int)(larguraDaImagemAAlterar)/escala)*escala;
+        int alturaMax = ((int)(alturaDaImagemAAlterar/escala))*escala;
 
-        /*int valorEscala;
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("indique a escala ");
-        valorEscala = scanner.nextInt();*/
-
-        // O que é que acontece se a escala for ímpar?
-        // O que é que acontece se a imagem não for quadrada?
-        // O que é que acontece, se as dimensões da imagem destino não baterem certo com a escala?
 
         ImagemACores imagemNova = new ImagemACores(larguraDaImagemAAlterar/escala, alturaDaImagemAAlterar/escala);
 
-        // Imagem 4x4
-        //   0      1     2     3
-        //0: [0, 0][0, 1][0, 2][0, 3]
-        //1: [1, 0][1, 1][1, 2][1, 3]
-        //2: [2, 0][2, 1][2, 2][2, 3]
-        //3: [3, 0][3, 1][3, 2][3, 3]
 
-        //System.out.println("Working Directory = " + System.getProperty("user.dir"));
 
         for(int xQuadradoFora = 0; xQuadradoFora < larguraMax; xQuadradoFora+=escala) {
             for(int yQuadradoFora = 0; yQuadradoFora < alturaMax; yQuadradoFora+=escala) {
@@ -64,13 +47,14 @@ public class ManipuladorDeImagens {
             }
         }
 
-        // Isto não é suposto ficar aqui, é só para testes!
-        imagemNova.escreverParaDisco("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\bugsbunny_reduz.png", "png");
+        // Habilitar o metodo escreverParaDisco para testar a PARTE I
+        // imagemNova.escreverParaDisco("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\imagem_reduzida.png", "png");
+        // System.out.println("Working Directory = " + System.getProperty("user.dir"));
 
         return imagemNova;
     }
 
-// AUMENTA ***************************************************************************************************************************
+// METODO AUMENTA IMAGEM ***************************************************************************************************************************
 
     public static ImagemACores aumentaImagem(ImagemACores imagemAAumentar) {
 
@@ -122,16 +106,19 @@ public class ManipuladorDeImagens {
             }
 
         }
-        imagemMaior.escreverParaDisco("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\bugsbunny_aumenta.png","png");
+        // Habilitar o metodo escreverParaDisco para testar a PARTE I
+        // imagemMaior.escreverParaDisco("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\imagem_aumentada.png","png");
+
         return imagemMaior;
     }
 
-// PIXELIZA *************************************************************************************************************************
+// METODO PIXELIZA IMAGEM *************************************************************************************************************************
+
     public static ImagemACores pixelizaImagem(ImagemACores imagemAPixelizar, int escala) {
         int largura = imagemAPixelizar.obterLargura();
         int altura = imagemAPixelizar.obterAltura();
-        int larguraMax= ((int)largura/escala)*escala;
-        int alturaMax= ((int)altura/escala)*escala;
+        int larguraMax= ((int)(largura/escala))*escala;
+        int alturaMax= ((int)(altura/escala))*escala;
 
         ImagemACores imagemNova = new ImagemACores(largura, altura);
 
@@ -165,14 +152,14 @@ public class ManipuladorDeImagens {
                 }
             }
         }
-
-        imagemNova.escreverParaDisco("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\bugsbunny_pixel.png", "png");
+        // Habilitar o metodo escreverParaDisco para testar a PARTE I
+        // imagemNova.escreverParaDisco("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\imagem_pixelizada.png", "png");
 
         return imagemNova;
     }
 
 
-    // metodo para obter a média das cores dos pixeis adjacentes  ********************************************
+ /*   // metodo para obter a média das cores dos pixeis adjacentes  ********************************************
 
     public static Cor obterMediaDaCor (ImagemACores imagemAManipular, ImagemACores imagemResultante, int largurafinal, int alturafinal, int escala) {
         Cor corNova;
@@ -208,7 +195,7 @@ public class ManipuladorDeImagens {
     return corNova;
     }
 
-
+*/
 
 
 }

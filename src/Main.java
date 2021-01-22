@@ -3,69 +3,80 @@ public class Main {
 
     public static void main(String[] args) {
 
-	// ATENÇÃO: priemiro metodo a correr deverá ser Adicionar Imagem - adicionarImagem()
 
-        ManipuladorDeImagens manipuladorDeImagens;
+/*
+        // Parte I: Métodos Úteis para a Manipulação de Imagens *********************************************************************
 
-        // Manipulador Imagens testes
+        // Carregar Imagens:
+        ImagemACores bugsBunny = new ImagemACores("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\bugsBunny.png");
+        ImagemACores tomEJerry = new ImagemACores("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\tomjerry.png");
+        ImagemACores popeye = new ImagemACores("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\popeye.jpg");
+        ImagemACores mickey = new ImagemACores("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\jerry.png");
 
-        //ImagemACores tomEJerry = new ImagemACores("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\tomjerrypng.png");
-        //ImagemACores bugsBunny = new ImagemACores("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\bugsBunny.png");
-        //ImagemACores Jerry = new ImagemACores("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\jerry.png");
+        // Testar a Redução:
+        ImagemACores mickeyReduz = ManipuladorDeImagens.reduzImagem(mickey, 4);
 
-        //ImagemACores tomEJerryReduzido = ManipuladorDeImagens.reduzImagem(tomEJerry, 2);
-        //ImagemACores bugsBunnyReduzido = ManipuladorDeImagens.reduzImagem(bugsBunny, 4);
-        //ImagemACores bugsBunnyPixel = ManipuladorDeImagens.pixelizaImagem(bugsBunny, 3);
-        //ImagemACores tomEJerryPixel = ManipuladorDeImagens.pixelizaImagem(tomEJerry, 2);
-        //ImagemACores JerryAumentado = ManipuladorDeImagens.aumentaImagem(Jerry);
+        // Testar a Pixelização:
+        ImagemACores mickeyPix = ManipuladorDeImagens.pixelizaImagem(mickey, 3);
 
-        // ImagemComEtiqueta testes
+        // Testar o Aumento da Imagem:
+        ImagemACores mickeyAumenta = ManipuladorDeImagens.aumentaImagem(mickey);
 
-       // ImagemComEtiqueta imagemEtiqueta = new ImagemComEtiqueta("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\jerry.png", "rato");
-        //ImagemComEtiqueta imagemEtiqueta2 = new ImagemComEtiqueta("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\tomjerrypng.png", "gato e rato");
-        //ImagemComEtiqueta imagemEtiqueta3 = new ImagemComEtiqueta("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\bugsbunny.png", "coelho");
-        //imagemEtiqueta.mostrarDados(imagemEtiqueta);
+        //Habilitar o método escerverParaDisco, na Classe ManipuladorDeImagens, para se verificar o resultado das manipulações nas fotos!
+*/
+
+
+        // Parte II: A Classe Álbum  ***************************************************************************************************
+
+        // ********  atenção: primeiro metodo a correr deverá ser Adicionar Imagem - adicionarImagem()
 
         Album album = new Album();
 
         album.adicionarImagem("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\jerry.png", "rato");
-        //album.mostrarDados(imagemEtiqueta);
-        album.adicionarImagem("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\tomjerrypng.png", "gato e rato");
-        //album.mostrarDados(imagemEtiqueta2);
+        album.adicionarImagem("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\tomjerry.png", "gatoErato");
         album.adicionarImagem("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\bugsbunny.png", "coelho");
-        album.adicionarImagem("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\supermario.png", "mario");
+        album.adicionarImagem("C:\\Users\\ferna\\IdeaProjects\\Piaget\\Projeto_PO\\images\\beepbeep.jpg", "runner");
 
-        //album.pixelizarImagemExibicao();
-       /* album.imagemExibicao();
-        album.imagemSeguinte();
-        System.out.println("-------------------------------------------------");
-        album.imagemExibicao();
-        album.imagemSeguinte();
-        System.out.println("-------------------------------------------------");
-        album.imagemExibicao();
-        System.out.println("-------------------------------------------------");
-        album.imagemAnterior();
-        album.imagemExibicao();
-        System.out.println("-------------------------------------------------");
-        album.aumentarImagemExibicao();
-        System.out.println("-------------------------------------------------");
-        album.pixelizarImagemExibicao();*/
-        //album.getImagens();
-        //album.obterImagemReduzidaAnterior();
+
+        System.out.println("---------------------- Imagem em Exibição: ");
         album.obterImagemExibicao();
-        System.out.println("-------------------------------------------------");
-         album.obterImagemReduzidaSeguinte();
-        //System.out.println("-------------------------------------------------");
+        System.out.println("---------------------- mudar imagem seguinte! ");
         album.mudarImagemSeguinte ();
-        System.out.println("-------------------------------------------------");
+        System.out.println("---------------------- Imagem em Exibição: ");
         album.obterImagemExibicao();
-        System.out.println("-------------------------------------------------");
-        System.out.println("-------------------------------------------------");
-        // album.mudarImagemSeguinte ();
-        //album.obterImagemExibicao();
-        //album.mudarImagemSeguinte ();
-        //album.obterImagemExibicao();
-        //album.mostrarTodoAlbum ();
+        System.out.println("---------------------- mudar imagem seguinte! ");
+        album.mudarImagemSeguinte ();
+        System.out.println("---------------------- Imagem em Exibição: ");
+        album.obterImagemExibicao();
+        System.out.println("---------------------- mudar imagem seguinte! ");
+        album.mudarImagemSeguinte ();
+        System.out.println("---------------------- Imagem em Exibição: ");
+        album.obterImagemExibicao();
+
+        System.out.println("---------------------- mudar para imagem anterior! ");
+        album.mudarImagemAnterior ();
+        System.out.println("---------------------- Imagem em Exibição: ");
+        album.obterImagemExibicao();
+
+        System.out.println("---------------------- ImagemReduzidaSeguinte ");
+        album.obterImagemReduzidaSeguinte();
+        System.out.println("---------------------- ImagemReduzidaAnterior ");
+        album.obterImagemReduzidaAnterior();
+
+        System.out.println("");
+        System.out.println("---------------------- Ampliar Imagem ");
+        album.ampliarImagem();
+        System.out.println("");
+        System.out.println("---------------------- Imagem em Exibição: ");
+        album.obterImagemExibicao();
+
+        System.out.println("---------------------- Pixelizar Imagem ");
+        album.pixelarImagem();
+        System.out.println("---------------------- Imagem em Exibição: ");
+        album.obterImagemExibicao();
+
+        System.out.println("");
+        album.mostrarTodoAlbum ();
 
     }
 }
