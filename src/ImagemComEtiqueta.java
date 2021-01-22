@@ -3,6 +3,8 @@ public class ImagemComEtiqueta extends ImagemACores {
     private String nomeImagem;
     private int alturaImagem, larguraImagem;
     private String ficheiro;
+    private int [][] dados;
+
 
     ImagemComEtiqueta(String ficheiro, String nomeImagem) {
         super(ficheiro);
@@ -10,20 +12,9 @@ public class ImagemComEtiqueta extends ImagemACores {
         this.nomeImagem = nomeImagem;
         this.alturaImagem = obterAltura();
         this.larguraImagem = obterLargura();
+        this.dados = obterDados();
     }
 
-    public String getFicheiro() {
-        return ficheiro;
-    }
-
-
-    public String obterNomeImagem() {
-        return nomeImagem;
-    }
-
-    public void mudarNomeImagem(String nomeImagem) {
-        this.nomeImagem = nomeImagem;
-    }
 
     public int getAlturaImagem() {
         return obterAltura();
@@ -31,5 +22,13 @@ public class ImagemComEtiqueta extends ImagemACores {
 
     public int getLarguraImagem() {
         return obterLargura();
+    }
+
+    public String getNomeImagem() { return nomeImagem; }
+
+    public int[][] getDados() { return dados; }
+
+    public void setDados(int[][] dados) {
+        this.dados = dados;
     }
 }

@@ -8,8 +8,8 @@ public class ManipuladorDeImagens {
 
         int larguraDaImagemAAlterar = imagemAAlterar.obterLargura();
         int alturaDaImagemAAlterar = imagemAAlterar.obterAltura();
-        int larguraMax = ((int)(larguraDaImagemAAlterar)/escala)*escala;
-        int alturaMax = ((int)(alturaDaImagemAAlterar/escala))*escala;
+        int larguraMax = (larguraDaImagemAAlterar/escala)*escala;
+        int alturaMax = (alturaDaImagemAAlterar/escala)*escala;
 
 
         ImagemACores imagemNova = new ImagemACores(larguraDaImagemAAlterar/escala, alturaDaImagemAAlterar/escala);
@@ -117,8 +117,8 @@ public class ManipuladorDeImagens {
     public static ImagemACores pixelizaImagem(ImagemACores imagemAPixelizar, int escala) {
         int largura = imagemAPixelizar.obterLargura();
         int altura = imagemAPixelizar.obterAltura();
-        int larguraMax= ((int)(largura/escala))*escala;
-        int alturaMax= ((int)(altura/escala))*escala;
+        int larguraMax= (largura/escala)*escala;
+        int alturaMax= (altura/escala)*escala;
 
         ImagemACores imagemNova = new ImagemACores(largura, altura);
 

@@ -17,8 +17,8 @@ public class Album {
     // (2º metodo) Obter Imagem em Exibição acompanhada das imagens laterais reduzidas:
     public void obterImagemExibicao() {
         obterImagemReduzidaAnterior ();
-        System.out.print("| " + (albumImagens.indexOf(imagemEmExibicao)+1) + ": " + imagemEmExibicao.obterNomeImagem()
-                + " - [" + imagemEmExibicao.obterLargura() + " x " + imagemEmExibicao.obterAltura() + "] (E) |");
+        System.out.print("| " + (albumImagens.indexOf(imagemEmExibicao)+1) + ": " + imagemEmExibicao.getNomeImagem()
+                + " - [" + imagemEmExibicao.getLarguraImagem() + " x " + imagemEmExibicao.getAlturaImagem() + "] (E) |");
         obterImagemReduzidaSeguinte ();
     }
 
@@ -29,7 +29,7 @@ public class Album {
             ImagemComEtiqueta imagem = albumImagens.get(albumImagens.indexOf(imagemEmExibicao) - 1);
             ImagemACores imagemCor = ManipuladorDeImagens.reduzImagem(imagem, 2);
 
-            System.out.print("|| " + (albumImagens.indexOf(imagem)+1) + ": " + imagem.obterNomeImagem()
+            System.out.print("|| " + (albumImagens.indexOf(imagem)+1) + ": " + imagem.getNomeImagem()
                     + " - [" + imagemCor.obterLargura() + " x " + imagemCor.obterAltura() + "] |");
 
         }
@@ -41,7 +41,7 @@ public class Album {
             ImagemComEtiqueta imagem = albumImagens.get(albumImagens.indexOf(imagemEmExibicao) + 1);
             ImagemACores imagemCor = ManipuladorDeImagens.reduzImagem(imagem, 2);
 
-            System.out.println("| " + (albumImagens.indexOf(imagem)+1) + ": " + imagem.obterNomeImagem()
+            System.out.println("| " + (albumImagens.indexOf(imagem)+1) + ": " + imagem.getNomeImagem()
                     + " - [" + imagemCor.obterLargura() + " x " + imagemCor.obterAltura() + "] ||");
 
         }
@@ -65,16 +65,16 @@ public class Album {
     public void ampliarImagem (){
 
         ImagemACores imagemAmpliada = ManipuladorDeImagens.aumentaImagem(imagemEmExibicao);
-        System.out.print("||" + (albumImagens.indexOf(imagemEmExibicao)+1) + ": " + imagemEmExibicao.obterNomeImagem()
+        System.out.print("||" + (albumImagens.indexOf(imagemEmExibicao)+1) + ": " + imagemEmExibicao.getNomeImagem()
                 + " - [" + imagemAmpliada.obterLargura() + " x " + imagemAmpliada.obterAltura() + "] (E) ||");
     }
 
 
-    // (8º método) Pixelizar Imagem em Exibição:
+    // (8º método) Pixelizar e alterar Imagem em Exibição:
     public void pixelarImagem () {
 
-    ImagemACores imagempixel = ManipuladorDeImagens.pixelizaImagem(imagemEmExibicao, 2);
-     //imagemEmExibicao= imagempixel;
+        ImagemACores imagempixel = ManipuladorDeImagens.pixelizaImagem(imagemEmExibicao, 2);
+        imagemEmExibicao.setDados(imagempixel.obterDados());
     }
 
     // (9º método) Mostrar o conteúdo do Album:
@@ -82,11 +82,11 @@ public class Album {
         System.out.println("Imagens de todo o Album:");
         for (ImagemComEtiqueta img : albumImagens) {
             if (img.equals(imagemEmExibicao)) {
-                System.out.println("||" + (albumImagens.indexOf(imagemEmExibicao)+1) + ": " + imagemEmExibicao.obterNomeImagem()
+                System.out.println("||" + (albumImagens.indexOf(imagemEmExibicao)+1) + ": " + imagemEmExibicao.getNomeImagem()
                         + " - [" + imagemEmExibicao.obterLargura() + " x " + imagemEmExibicao.obterAltura() + "] (E) ");
             }
             else {
-                System.out.println("||" + (albumImagens.indexOf(img) + 1) + ": " + img.obterNomeImagem()
+                System.out.println("||" + (albumImagens.indexOf(img) + 1) + ": " + img.getNomeImagem()
                         + " - [" + img.obterLargura() + " x " + img.obterAltura() + "] ");
             }
         }
