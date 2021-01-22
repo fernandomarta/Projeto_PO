@@ -161,7 +161,7 @@ public class ManipuladorDeImagens {
 
  /*   // metodo para obter a média das cores dos pixeis adjacentes  ********************************************
 
-    public static Cor obterMediaDaCor (ImagemACores imagemAManipular, ImagemACores imagemResultante, int largurafinal, int alturafinal, int escala) {
+    public static Cor obterMediaDaCor (ImagemACores imagemAManipular, int largurafinal, int alturafinal, int escala) {
         Cor corNova;
         for (int xQuadradoReferencia = 0; xQuadradoReferencia < largurafinal; xQuadradoReferencia += escala) {
             for (int yQuadradoReferencia = 0; yQuadradoReferencia < alturafinal; yQuadradoReferencia += escala) {
